@@ -1,6 +1,5 @@
-const app = require('express')();
-const bodyParser = require('body-parser');
-const dice = require('roll');
+const { app } = require('./app');
+
 
 
 const port = 3000;
