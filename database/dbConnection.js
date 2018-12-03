@@ -8,3 +8,7 @@ const cn = {
   user: 'ytalolst',
   password: password
 };
+
+const db = pg(cn);
+
+module.exports = db;
