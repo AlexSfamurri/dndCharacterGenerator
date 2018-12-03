@@ -1,9 +1,10 @@
 const pg = require('pg-promise');
+const { password } = require('../config');
 
 const cn = {
-  host: 'localhost',
-  port: 5431,
-  database: 'dnd5e',
-  user: 'alexsfamurri',
-  password: 'Getoffme1'
+  host: 'elmer.db.elephantsql.com',
+  port: 5432,
+  database: 'ytalolst',
+  user: 'ytalolst',
+  password: password
 };
