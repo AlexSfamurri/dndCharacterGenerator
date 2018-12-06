@@ -6,10 +6,8 @@ module.exports = {
     SELECT * FROM characters
     WHERE name = $1
     `, [name])
-  .then(([ character ])=>{
-    return character;
-  })
-  .catch((err)=>{
+  .then(([ character ]) => character)
+  .catch((err) => {
     console.error(err);
   }),
 
@@ -17,10 +15,8 @@ module.exports = {
     SELECT * FROM attributes
     WHERE id = $1
   `, [id])
-  .then(([ attributes ]) =>{
-    return attributes;
-  })
-  .catch(err=>{
+  .then(([ attributes ]) => attributes)
+  .catch(err => {
     console.error(err);
   }),
 
@@ -28,10 +24,8 @@ module.exports = {
     SELECT * FROM classes
     WHERE id = $1
   `, [id])
-  .then(([characterClass]) =>{
-    return characterClass;
-  })
-  .catch(err=>{
+  .then(([characterClass]) => characterClass)
+  .catch(err => {
     console.error(err);
   }),
 
@@ -39,9 +33,7 @@ module.exports = {
     SELECT * FROM classes
     WHERE name = $1
   `, [name])
-  .then(([characterClass]) => {
-    return characterClass;
-  })
+  .then(([characterClass]) => characterClass)
   .catch(err => {
     console.error(err);
   }),
@@ -50,10 +42,8 @@ module.exports = {
     SELECT * FROM races
     WHERE id = $1
   `, [id])
-  .then(([race])=>{
-    return race;
-  })
-  .catch(err=>{
+  .then(([race]) => race)
+  .catch(err => {
     console.error(err);
   }),
 
@@ -61,9 +51,7 @@ module.exports = {
     SELECT * FROM races
     WHERE name = $1
   `, [name])
-  .then(([race]) => {
-    return race;
-  })
+  .then(([race]) => race)
   .catch(err => {
     console.error(err);
   }),
@@ -72,10 +60,8 @@ module.exports = {
     SELECT bonus FROM proficiency_bonuses
     WHERE id = $1
   `, [id])
-  .then(([ { bonus } ])=>{
-    return bonus;
-  })
-  .catch(err=>{
+  .then(([ { bonus } ]) => bonus)
+  .catch(err => {
     console.error(err);
   }),
 
@@ -83,10 +69,8 @@ module.exports = {
     SELECT * FROM backgrounds
     WHERE id = $1
   `, [id])
-  .then(([ background ])=>{
-    return background;
-  })
-  .catch(err=>{
+  .then(([ background ]) => background)
+  .catch(err => {
     console.error(err);
   }),
 
@@ -94,9 +78,7 @@ module.exports = {
     SELECT * FROM backgrounds
     WHERE name = $1
   `, [name])
-  .then(([background]) => {
-    return background;
-  })
+  .then(([background]) => background)
   .catch(err => {
     console.error(err);
   }),
@@ -104,24 +86,31 @@ module.exports = {
   getSubClassById : (id) => db.any(`
     SELECT * FROM sub_class
     WHERE id = $1
-  `, id)
-  .then(([ subClass ])=>{
-    return subClass;
-  })
-  .catch(err=>{
+  `, [id])
+  .then(([ subClass ]) => subClass)
+  .catch(err => {
     console.error(err);
   }),
 
-  getSubClassByClassId: (ClassId) => db.any(`
+  getSubClassByClassId: (classId) => db.any(`
     SELECT * FROM sub_class
     WHERE class_id = $1
-  `, ClassId)
-    .then(([subClass]) => {
-      return subClass;
-    })
+  `, [classId])
+    .then(([subClass]) => subClass )
     .catch(err => {
       console.error(err);
     }),
+  
+  getSubClassByName: (name) => db.any(`
+    SELECT * FROM sub_class
+    WHERE name = $1
+  `, [name])
+  .then(([subClass]) => subClass)
+  .catch(err => {
+    console.error(err);
+  }),
+
+  
   
 
 
