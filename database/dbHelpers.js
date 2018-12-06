@@ -90,6 +90,17 @@ module.exports = {
     console.error(err);
   }),
 
+  getBackgroundByName: (name) => db.any(`
+    SELECT * FROM backgrounds
+    WHERE name = $1
+  `, [name])
+  .then(([background]) => {
+    return background;
+  })
+  .catch(err => {
+    console.error(err);
+  }),
+
   getSubClassById : (id) => db.any(`
     SELECT * FROM sub_class
     WHERE id = $1
