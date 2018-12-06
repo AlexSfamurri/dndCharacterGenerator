@@ -46,6 +46,17 @@ module.exports = {
     console.error(err);
   }),
 
+  getRaceByName : (name) => db.any(`
+    SELECT * FROM races
+    WHERE name = $1
+  `, [name])
+  .then(([race]) => {
+    return race;
+  })
+  .catch(err => {
+    console.error(err);
+  }),
+
   getProficiencyBonusById : (id) => db.any(`
     SELECT bonus FROM proficiency_bonuses
     WHERE id = $1
@@ -89,7 +100,7 @@ module.exports = {
     .catch(err => {
       console.error(err);
     }),
-
+  
 
 
 
