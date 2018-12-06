@@ -13,4 +13,26 @@ module.exports = {
     console.error(err);
   }),
 
+  getAttributesById : (id) => db.any(`
+    SELECT * FROM attributes
+    WHERE id = $1
+  `, [id])
+  .then(([ attributes ]) =>{
+    return attributes;
+  })
+  .catch(err=>{
+    console.error(err);
+  }),
+
+  getClassById : (id) => db.any(`
+    SELECT * FROM classes
+    WHERE id = $1
+  `, [id])
+  .then(([characterClass]) =>{
+    return characterClass;
+  })
+  .catch(err=>{
+    console.error(err);
+  })
+
 };
