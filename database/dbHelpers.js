@@ -45,6 +45,17 @@ module.exports = {
   .catch(err=>{
     console.error(err);
   }),
-  
+
+  getProficencyBonusById : (id) => db.any(`
+    SELECT bonus FROM profeciency_bonuses
+    WHERE id = $1
+  `, [id])
+  .then(([ { bonus } ])=>{
+    return bonus;
+  })
+  .catch(err=>{
+    console.error(err);
+  })
+
 
 };
