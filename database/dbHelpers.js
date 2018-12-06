@@ -35,6 +35,17 @@ module.exports = {
     console.error(err);
   }),
 
+  getClassByName: (name) => db.any(`
+    SELECT * FROM classes
+    WHERE name = $1
+  `, [name])
+  .then(([characterClass]) => {
+    return characterClass;
+  })
+  .catch(err => {
+    console.error(err);
+  }),
+
   getRaceById : (id) => db.any(`
     SELECT * FROM races
     WHERE id = $1
