@@ -57,6 +57,41 @@ module.exports = {
     console.error(err);
   }),
 
+  getBackgroundById : (id) => db.any(`
+    SELECT * FROM backgrounds
+    WHERE id = $1
+  `, [id])
+  .then(([ background ])=>{
+    return background;
+  })
+  .catch(err=>{
+    console.error(err);
+  }),
+
+  getSubClassById : (id) => db.any(`
+    SELECT * FROM sub_class
+    WHERE id = $1
+  `, id)
+  .then(([ subClass ])=>{
+    return subClass;
+  })
+  .catch(err=>{
+    console.error(err);
+  }),
+
+  getSubClassByClassId: (ClassId) => db.any(`
+    SELECT * FROM sub_class
+    WHERE class_id = $1
+  `, ClassId)
+    .then(([subClass]) => {
+      return subClass;
+    })
+    .catch(err => {
+      console.error(err);
+    }),
+
+
+
 
 
 
