@@ -33,6 +33,18 @@ module.exports = {
   })
   .catch(err=>{
     console.error(err);
+  }),
+
+  getRaceById : (id) => db.any(`
+    SELECT * FROM races
+    WHERE id = $1
+  `, [id])
+  .then(([race])=>{
+    return race;
   })
+  .catch(err=>{
+    console.error(err);
+  }),
+  
 
 };
