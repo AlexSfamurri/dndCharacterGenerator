@@ -110,6 +110,29 @@ module.exports = {
     console.error(err);
   }),
 
+  armorByName: (name) => db.any(`
+    SELECT * FROM armor
+    WHERE name = $1
+  `, [name])
+  .then(([armor])=>{
+    return armor;
+  })
+  .catch(err =>{
+    console.error(err);
+  }),
+
+  armorById: (id) => db.any(`
+    SELECT * FROM armor
+    WHERE id = $1
+  `, [id])
+  .then(([armor])=>{
+    return armor;
+  })
+  .catch(err=>{
+    console.error(err);
+  }),
+
+  
 
   
   
