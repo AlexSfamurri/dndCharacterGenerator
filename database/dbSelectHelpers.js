@@ -498,5 +498,14 @@ module.exports = {
     console.error(err);
   }),
 
+  subRaceStatModsBySubRaceId: (subRaceId) => db.any(`
+    SELECT stat, mod FROM sub_racial_stat_mod
+    WHERE sub_race_id = $1
+  `, [subRaceId]) 
+  .then(statMods => statMods)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 };
