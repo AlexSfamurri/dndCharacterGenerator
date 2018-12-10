@@ -480,6 +480,14 @@ module.exports = {
     console.error(err);
   }),
 
+  subRaceIdByName: (name) => db.any(`
+    SELECT id FROM sub_races
+    WHERE name = $1
+  `, [name])
+  .then(([id])=> id)
+  .catch(err => {
+    console.error(err);
+  }),
   
 
 };
