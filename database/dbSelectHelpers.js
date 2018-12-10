@@ -525,5 +525,14 @@ module.exports = {
     console.error(err);
   }),
 
+  weaponsByType: (type) => db.any(`
+    SELECT * FROM weapons
+    WHERE type = $1
+  `, [type])
+  .then(weapons => weapons)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 };
