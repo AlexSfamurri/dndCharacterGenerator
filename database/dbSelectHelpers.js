@@ -219,5 +219,13 @@ module.exports = {
     console.error(err);
   }),
 
+  skillIdsByClassId: (classId) => db.any(`
+    SELECT skill_id FROM class_skills
+    WHERE class_id = $1
+  `, [classId])
+  .then(skills => skills)
+  .catch(err => {
+    console.error(err);
+  }),
   
 };
