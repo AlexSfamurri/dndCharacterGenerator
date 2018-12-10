@@ -181,6 +181,16 @@ module.exports = {
   .catch(err=>{
     console.error(err);
   }),
+
+  toolIdsByCharacterId: (characterId) => db.any(`
+    SELECT tool_id FROM character_tool
+    WHERE character_id = $1
+  `, [characterId])
+  .then(tools => tools)
+  .catch(err =>{
+    console.error(err);
+  }),
+
   
 
   
