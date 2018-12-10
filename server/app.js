@@ -3,5 +3,6 @@ const app = require('express')();
 const app = require('express');
 const bodyParser = require('body-parser');
 const dice = require('roll');
+const select = require('../database/dbSelectHelpers');
 
-module.exports = { app, bodyParser, dice };
+module.exports = { app, bodyParser, dice, select };
