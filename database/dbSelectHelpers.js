@@ -470,6 +470,16 @@ module.exports = {
   .catch(err =>{
     console.error(err);
   }),
+
+  subRaceFeaturesBySubRaceId: (subRaceId) => db.any(`
+    SELECT name, features FROM sub_race_features
+    WHERE sub_race_id = $1
+  `, [subRaceId])
+  .then(subRaceStuff => subRaceStuff)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 
 };
