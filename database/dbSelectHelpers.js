@@ -155,7 +155,23 @@ module.exports = {
     console.error(err);
   }),
 
+  armorIdByCharacterId: (characterId) => db.any(`
+    SELECT armor_id FROM character_armor
+    WHERE character_id = $1
+  `, [characterId])
+  .then(([armorId]) => armorId)
+  .catch(err=>{
+    console.error(err);
+  }),
 
-
+  languageIdByCharacterId: (characterId) => db.any(`
+    SELECT language_id FROM character_languages
+    WHERE character_id = $1
+  `, [characterId])
+  .then(([languageId]) => languageId)
+  .catch(err=>{
+    console.error(err);
+  }), 
+  
   
 };
