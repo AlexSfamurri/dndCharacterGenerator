@@ -143,6 +143,17 @@ module.exports = {
     console.error(err);
   }),
 
+  barbarianInfoByLevelAndClassId: (level, classId) => db.any(`
+    SELECT * FROM barbarian
+    WHERE level = $1 AND class_id = $2
+  `, [level, classId])
+  .then(([barbarian])=>{
+    return barbarian;
+  })
+  .catch(err=>{
+    console.error(err);
+  }),
+
   
 
   
