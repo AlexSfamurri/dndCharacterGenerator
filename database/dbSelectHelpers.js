@@ -137,29 +137,25 @@ module.exports = {
     console.error(err);
   }),
 
-  barbarianInfoByLevelAndClassId: (level) => db.any(`
-    SELECT * FROM barbarian
+  classInfoByLevelAndName: (level, name) => db.any(`
+    SELECT * FROM $2
     WHERE level = $1
-  `, [level, classId])
-  .then(([barbarian])=> barbarian)
+  `, [level, name])
+  .then(([characterClass])=> characterClass)
   .catch(err=>{
     console.error(err);
   }),
 
-  barbarianFeaturesUpTolevel: (level) => db.any(`
-    SELECT feature FROM barbarian
+  classFeaturesUpToLevelFromNamedTable: (level, name) => db.any(`
+    SELECT feature FROM $2
     WHERE level <= $1
-  `, [level])
-  .then((barbarianFeatures) => barbarianFeatures)
+  `, [level, name])
+  .then((classFeatures) => classFeatures)
   .catch(err=>{
     console.error(err);
   }),
 
+
+
   
-  
-
-
-
-
-
 };
