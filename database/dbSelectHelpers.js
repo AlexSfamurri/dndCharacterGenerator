@@ -443,7 +443,15 @@ module.exports = {
     console.error(err);
   }),
 
-  
 
+  standardSubClassFeaturesBySubclassIdAndLevel: (subClassId, level) => db.any(`
+    SELECT features FROM standard_sub_class
+    WHERE sub_class_id = $1 AND level <= $2
+  `, [subClassId, level])
+  .then(features => features)
+  .catch(err => {
+    console.error(err);
+  }),
+  
 
 };
