@@ -371,6 +371,15 @@ module.exports = {
     console.error(err);
   }),
 
+  skillInfoBySkillId: (skillId) => db.any(`
+    SELECT name, attribute FROM skills
+    WHERE id = $1
+  `, [skillId])
+  .then(([skillInfo]) => skillInfo)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 
 
