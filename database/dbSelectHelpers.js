@@ -299,11 +299,29 @@ module.exports = {
     console.error(err);
   }),
 
-  enviromentsByLandId: (landId) => db.any(`
+  enviromentByLandId: (landId) => db.any(`
     SELECT enviroments FROM lands
     WHERE id = $1
   `, [landId])
   .then(([land]) => land)
+  .catch(err => {
+    console.error(err);
+  }),
+
+  languageById: (id) => db.any(`
+    SELECT language FROM languages
+    WHERE id = $1
+  `, [id])
+  .then(([language]) => language)
+  .catch(err => {
+    console.error(err);
+  }),
+
+  schoolNameById: (id) => db.any(`
+    SELECT school_name FROM magic_schools
+    WHERE id = $1
+  `, [id])
+  .then(([school]) => school)
   .catch(err => {
     console.error(err);
   }),
