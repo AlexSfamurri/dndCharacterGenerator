@@ -273,5 +273,14 @@ module.exports = {
     console.error(err);
   }),
 
+  invocationsByName: (name) => db.any(`
+    SELECT feature FROM invocations
+    WHERE name = $1
+  `, [name])
+  .then(([invocation]) => invocation)
+  .catch(err=>{
+    console.error(err);
+  }),
+
   
 };
