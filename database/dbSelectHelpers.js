@@ -132,6 +132,17 @@ module.exports = {
     console.error(err);
   }),
 
+  skillIdByBackgroundId: (idBackground) => db.any(`
+    SELECT skill_id FROM background_skill
+    WHERE background_id = $1
+  `, [idBackground])
+  .then(skills =>{
+    return skills;
+  })
+  .catch(err =>{
+    console.error(err);
+  }),
+
   
 
   
