@@ -388,6 +388,15 @@ module.exports = {
   .catch(err => {
     console.error(err);
   }),
+
+  spellCastingSubClassBySubClassId: (subClassId) => db.any(`
+    SELECT * FROM spellcasting_sub_class
+    WHERE sub_class_id = $1
+  `, [subClassId])
+  .then(subClass => subClass)
+  .catch(err => {
+    console.error(err);
+  }),
   
 
 
