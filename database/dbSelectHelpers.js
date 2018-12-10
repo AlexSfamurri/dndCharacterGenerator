@@ -114,9 +114,7 @@ module.exports = {
     SELECT * FROM armor
     WHERE name = $1
   `, [name])
-  .then(([armor])=>{
-    return armor;
-  })
+  .then(([armor])=> armor)
   .catch(err =>{
     console.error(err);
   }),
@@ -125,9 +123,7 @@ module.exports = {
     SELECT * FROM armor
     WHERE id = $1
   `, [id])
-  .then(([armor])=>{
-    return armor;
-  })
+  .then(([armor])=> armor)
   .catch(err=>{
     console.error(err);
   }),
@@ -136,25 +132,28 @@ module.exports = {
     SELECT skill_id FROM background_skill
     WHERE background_id = $1
   `, [idBackground])
-  .then(skills =>{
-    return skills;
-  })
+  .then(skills => skills)
   .catch(err =>{
     console.error(err);
   }),
 
-  barbarianInfoByLevelAndClassId: (level, classId) => db.any(`
+  barbarianInfoByLevelAndClassId: (level) => db.any(`
     SELECT * FROM barbarian
-    WHERE level = $1 AND class_id = $2
+    WHERE level = $1
   `, [level, classId])
-  .then(([barbarian])=>{
-    return barbarian;
-  })
+  .then(([barbarian])=> barbarian)
   .catch(err=>{
     console.error(err);
   }),
 
-  
+  barbarianFeaturesUpTolevel: (level) => db.any(`
+    SELECT feature FROM barbarian
+    WHERE level <= $1
+  `, [level])
+  .then((barbarianFeatures) => barbarianFeatures)
+  .catch(err=>{
+    console.error(err);
+  }),
 
   
   
