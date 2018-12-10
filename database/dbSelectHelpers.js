@@ -353,6 +353,15 @@ module.exports = {
     console.error(err);
   }),
 
+  savingThrowIdsByClassId: (classId) => db.any(`
+    SELECT saving_throw_id FROM class_saving_throws
+    WHERE class_id = $1
+  `, [classId])
+  .then(savingThrows => savingThrows)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 
 
