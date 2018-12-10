@@ -516,5 +516,14 @@ module.exports = {
     console.error(err);
   }),
 
+  toolByName: (name) => db.any(`
+    SELECT * FROM tools
+    WHERE name = $1
+  `, [name])
+  .then(([tool])=> tool)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 };
