@@ -210,5 +210,14 @@ module.exports = {
     console.error(err);
   }),
 
+  featuresByClassIdAndLevel: (classId, level) => db.any(`
+    SELECT feature FROM class_features
+    WHERE class_id = $1 AND level <= $2
+  `, [classId, level])
+  .then(features => features)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 };
