@@ -164,14 +164,24 @@ module.exports = {
     console.error(err);
   }),
 
-  languageIdByCharacterId: (characterId) => db.any(`
+  languageIdsByCharacterId: (characterId) => db.any(`
     SELECT language_id FROM character_languages
     WHERE character_id = $1
   `, [characterId])
-  .then(([languageId]) => languageId)
+  .then((languageIds) => languageIds)
   .catch(err=>{
     console.error(err);
   }), 
+
+  skillIdsByCharacterId: (characterId) => db.any(`
+    SELECT skills_id FROM character_skills
+    WHERE character_id = $1
+  `, [characterId])
+  .then(skills => skills)
+  .catch(err=>{
+    console.error(err);
+  }),
   
+
   
 };
