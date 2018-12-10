@@ -141,7 +141,7 @@ module.exports = {
     SELECT * FROM $2
     WHERE level = $1
   `, [level, name])
-  .then(([characterClass])=> characterClass)
+  .then(([ characterClass ])=> characterClass)
   .catch(err=>{
     console.error(err);
   }),
@@ -159,7 +159,7 @@ module.exports = {
     SELECT armor_id FROM character_armor
     WHERE character_id = $1
   `, [characterId])
-  .then(([armorId]) => armorId)
+  .then(([ armorId ]) => armorId)
   .catch(err=>{
     console.error(err);
   }),
@@ -268,7 +268,7 @@ module.exports = {
     SELECT hit_die FROM hit_dice
     WHERE id = $1
   `, [id])
-  .then(([hitDie])=> hitDie)
+  .then(([ hitDie ])=> hitDie)
   .catch(err =>{
     console.error(err);
   }),
@@ -277,7 +277,7 @@ module.exports = {
     SELECT feature FROM invocations
     WHERE name = $1
   `, [name])
-  .then(([invocation]) => invocation)
+  .then(([ invocation ]) => invocation)
   .catch(err=>{
     console.error(err);
   }),
@@ -335,5 +335,25 @@ module.exports = {
     console.error(err);
   }),
 
+  raceFeaturesByRaceId: (raceId) => db.any(`
+    SELECT name, feature FROM race_features
+    WHERE race_id = $1
+  `, [raceId])
+  .then(raceFeatures => raceFeatures)
+  .catch(err => {
+    console.error(err);
+  }),
+
+  racialStatModsByRaceId: (raceId) => db.any(`
+    SELECT stat, mod FROM racial_stat_mod
+    WHERE race_id = $1
+  `, [raceId])
+  .then(([statsMods]) => statsMods)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
+
+
 };
