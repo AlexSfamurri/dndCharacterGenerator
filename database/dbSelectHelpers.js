@@ -255,5 +255,14 @@ module.exports = {
     console.error(err);
   }),
 
+  domainSpellIdsByLevelAndDomainId: (domainId, level) => db.any(`
+    SELECT spells_id FROM domain_spells
+    WHERE sub_class_id = $1 AND level <= $2
+  `, [domainId, level])
+  .then(spellIds => spellIds)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 };
