@@ -507,5 +507,14 @@ module.exports = {
     console.error(err);
   }),
 
+  toolById: (id) => db.any(`
+    SELECT name, weight FROM tools
+    WHERE id = $1
+  `, [id])
+  .then(([tool])=> tool)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 };
