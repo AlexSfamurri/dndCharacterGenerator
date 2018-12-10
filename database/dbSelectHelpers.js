@@ -543,5 +543,14 @@ module.exports = {
     console.error(err);
   }),
 
+  weaponById: (id) => db.any(`
+    SELECT * FROM weapons
+    WHERE id = $1
+  `, [id])
+  .then(([weapon])=>weapon)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 };
