@@ -416,6 +416,15 @@ module.exports = {
     console.error(err);
   }),
 
+  spellsById: (id) => db.any(`
+    SELECT * FROM spells
+    WHERE id = $1
+  `, [id])
+  .then(([spell]) => spell)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 
 
