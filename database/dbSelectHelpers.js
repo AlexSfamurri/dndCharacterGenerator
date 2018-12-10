@@ -362,6 +362,15 @@ module.exports = {
     console.error(err);
   }),
 
+  attributeNameForSavingThrowsBySavingThrowId: (savingThrowId) => db.any(`
+    SELECT attribute_name FROM saving_throws
+    WHERE id = $1
+  `, [savingThrowId])
+  .then(([attributeName]) => attributeName)
+  .catch(err =>{
+    console.error(err);
+  }),
+
   
 
 
