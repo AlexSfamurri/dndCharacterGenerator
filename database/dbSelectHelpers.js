@@ -282,5 +282,12 @@ module.exports = {
     console.error(err);
   }),
 
+  allInvocations: () => db.any(`
+    SELECT * FROM invocations
+  `)
+  .then(invocations => invocations)
+  .catch(err=>{
+    console.error(err);
+  }),
   
 };
