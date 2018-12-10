@@ -380,6 +380,14 @@ module.exports = {
     console.error(err);
   }),
 
+  speedByRaceId: (raceId) => db.any(`
+    SELECT speed_in_feet FROM speed
+    WHERE race_id = $1
+  `, [raceId])
+  .then(([speed]) => speed)
+  .catch(err => {
+    console.error(err);
+  }),
   
 
 
