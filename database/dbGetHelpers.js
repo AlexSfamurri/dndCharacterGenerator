@@ -2,7 +2,7 @@ const db = require('./dbConnection');
 
 module.exports = {
 
-  getCharacterDataByName : ( name ) => db.any(`
+  characterDataByName : ( name ) => db.any(`
     SELECT * FROM characters
     WHERE name = $1
     `, [name])
@@ -11,7 +11,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getAttributesById : (id) => db.any(`
+  attributesById : (id) => db.any(`
     SELECT * FROM attributes
     WHERE id = $1
   `, [id])
@@ -20,7 +20,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getClassById : (id) => db.any(`
+  classById : (id) => db.any(`
     SELECT * FROM classes
     WHERE id = $1
   `, [id])
@@ -29,7 +29,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getClassByName: (name) => db.any(`
+  classByName: (name) => db.any(`
     SELECT * FROM classes
     WHERE name = $1
   `, [name])
@@ -38,7 +38,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getRaceById : (id) => db.any(`
+  raceById : (id) => db.any(`
     SELECT * FROM races
     WHERE id = $1
   `, [id])
@@ -47,7 +47,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getRaceByName : (name) => db.any(`
+  raceByName : (name) => db.any(`
     SELECT * FROM races
     WHERE name = $1
   `, [name])
@@ -56,7 +56,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getProficiencyBonusById : (id) => db.any(`
+  proficiencyBonusById : (id) => db.any(`
     SELECT bonus FROM proficiency_bonuses
     WHERE id = $1
   `, [id])
@@ -65,7 +65,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getBackgroundById : (id) => db.any(`
+  backgroundById : (id) => db.any(`
     SELECT * FROM backgrounds
     WHERE id = $1
   `, [id])
@@ -74,7 +74,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getBackgroundByName: (name) => db.any(`
+  backgroundByName: (name) => db.any(`
     SELECT * FROM backgrounds
     WHERE name = $1
   `, [name])
@@ -83,7 +83,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getSubClassById : (id) => db.any(`
+  subClassById : (id) => db.any(`
     SELECT * FROM sub_class
     WHERE id = $1
   `, [id])
@@ -92,7 +92,7 @@ module.exports = {
     console.error(err);
   }),
 
-  getSubClassByClassId: (classId) => db.any(`
+  subClassByClassId: (classId) => db.any(`
     SELECT * FROM sub_class
     WHERE class_id = $1
   `, [classId])
@@ -101,7 +101,7 @@ module.exports = {
       console.error(err);
     }),
   
-  getSubClassByName: (name) => db.any(`
+  subClassByName: (name) => db.any(`
     SELECT * FROM sub_class
     WHERE name = $1
   `, [name])
@@ -109,6 +109,7 @@ module.exports = {
   .catch(err => {
     console.error(err);
   }),
+
 
   
   
