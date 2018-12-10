@@ -191,6 +191,14 @@ module.exports = {
     console.error(err);
   }),
 
+  weaponIdsByCharacterid: (characterId) => db.any(`
+    SELECT weapon_id FROM character_weapon
+    WHERE character_id = $1
+  `, [characterId])
+  .then(weapons => weapons)
+  .catch(err =>{
+    console.error(err);
+  }),
   
 
   
