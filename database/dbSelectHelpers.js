@@ -199,7 +199,16 @@ module.exports = {
   .catch(err =>{
     console.error(err);
   }),
-  
+
+
+  armorIdByClassId: (classId) => db.any(`
+    SELECT armor_id FROM class_armor
+    WHERE class_id = $1
+  `, [classId])
+  .then(armorId => armorId)
+  .catch(err=>{
+    console.error(err);
+  }),
 
   
 };
