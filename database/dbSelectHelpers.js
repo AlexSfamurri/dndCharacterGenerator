@@ -462,6 +462,14 @@ module.exports = {
     console.error(err);
   }),
 
+  subClassInfoByClassId: (classId) => db.any(`
+    SELECT * FROM sub_class
+    WHERE class_id = $1
+  `, [classId])
+  .then(([subClass])=>subClass)
+  .catch(err =>{
+    console.error(err);
+  }),
   
 
 };
