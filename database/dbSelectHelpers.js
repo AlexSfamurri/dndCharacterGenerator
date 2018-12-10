@@ -264,5 +264,14 @@ module.exports = {
     console.error(err);
   }),
 
+  hitDieById: (id) => db.any(`
+    SELECT hit_die FROM hit_dice
+    WHERE id = $1
+  `, [id])
+  .then(([hitDie])=> hitDie)
+  .catch(err =>{
+    console.error(err);
+  }),
+
   
 };
