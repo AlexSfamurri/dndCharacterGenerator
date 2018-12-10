@@ -488,6 +488,15 @@ module.exports = {
   .catch(err => {
     console.error(err);
   }),
-  
 
+  subRacesByRaceId: (raceId) => db.any(`
+    SELECT * FROM sub_races
+    WHERE race_id = $1
+  `, [raceId])
+  .then(subRaces => subRaces)
+  .catch(err => {
+    console.error(err);
+  }),
+
+  
 };
