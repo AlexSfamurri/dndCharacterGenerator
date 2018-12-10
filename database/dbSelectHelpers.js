@@ -452,6 +452,16 @@ module.exports = {
   .catch(err => {
     console.error(err);
   }),
+
+  subClassIdByName: (name) => db.any(`
+    SELECT id FROM sub_class
+    WHERE name = $1
+  `, [name])
+  .then(([id]) => id)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 
 };
