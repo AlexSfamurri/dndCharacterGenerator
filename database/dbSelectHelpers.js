@@ -407,6 +407,15 @@ module.exports = {
     console.error(err);
   }),
 
+  spellsBySchoolId: (schoolId) => db.any(`
+    SELECT * FROM spells
+    WHERE school = $1
+  `, [schoolId])
+  .then(([spell])=> spell)
+  .catch(err =>{
+    console.error(err);
+  }),
+
   
 
 
