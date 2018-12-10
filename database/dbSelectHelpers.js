@@ -237,5 +237,14 @@ module.exports = {
     console.error(err);
   }),
 
+  toolIdsByClassId: (classId) => db.any(`
+    SELECT tool_id FROM class_tool
+    WHERE class_id = $1
+  `, [classId])
+  .then(toolIds => toolIds)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 };
