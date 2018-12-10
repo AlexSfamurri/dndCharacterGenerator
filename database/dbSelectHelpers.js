@@ -298,5 +298,15 @@ module.exports = {
   .catch(err => {
     console.error(err);
   }),
+
+  enviromentsByLandId: (landId) => db.any(`
+    SELECT enviroments FROM lands
+    WHERE id = $1
+  `, [landId])
+  .then(([land]) => land)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 };
