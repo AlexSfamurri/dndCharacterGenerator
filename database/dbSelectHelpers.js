@@ -397,6 +397,16 @@ module.exports = {
   .catch(err => {
     console.error(err);
   }),
+
+  spellCastingSubClassFeaturesBySubClassIdAndLevel: (subClassId, level) => db.any(`
+    SELECT features FROM spellcasting_sub_class
+    WHERE sub_class_id = $1 AND level <= $2
+  `, [subClassId, level])
+  .then(features => features)
+  .catch(err => {
+    console.error(err);
+  }),
+
   
 
 
