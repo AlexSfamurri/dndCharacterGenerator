@@ -289,5 +289,14 @@ module.exports = {
   .catch(err=>{
     console.error(err);
   }),
+
+  landSpellIdsByLevelAndLandId: (landId, level) => db.any(`
+    SELECT spell_id FROM land_spells
+    WHERE land = $1 AND level <= $2
+  `, [landId, level])
+  .then(landSpellIds => landSpellIds)
+  .catch(err => {
+    console.error(err);
+  }),
   
 };
