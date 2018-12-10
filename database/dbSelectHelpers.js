@@ -425,6 +425,14 @@ module.exports = {
     console.error(err);
   }),
 
+  spellsByRitualOrNot: (ritualBoolean) => db.any(`
+    SELECT * FROM spells
+    WHERE ritual = $1
+  `, [ritualBoolean])
+  .then(spells => spells)
+  .catch(err => {
+    console.error(err);
+  }),
   
 
 
