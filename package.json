@@ -24,6 +24,7 @@
     "express": "^4.16.4",
     "pg-promise": "^8.5.4",
     "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "roll": "^1.2.0"
   },
   "devDependencies": {}
